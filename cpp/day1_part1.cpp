@@ -39,9 +39,7 @@ std::pair<std::vector<int>, std::vector<int>> sort_lists(const std::vector<int>&
 
 long long sum_dif_lists(const std::vector<int>& list_1, const std::vector<int>& list_2)
 {
-    auto result = sort_lists(list_1,list_2);
-    auto sorted_list_1 = result.first;
-    auto sorted_list_2 = result.second;
+    auto [sorted_list_1,sorted_list_2] = sort_lists(list_1,list_2);
     auto ptr_list_1 = sorted_list_1.begin();
     auto ptr_list_2 = sorted_list_2.begin();
     long long score=0;
@@ -59,9 +57,7 @@ long long sum_dif_lists(const std::vector<int>& list_1, const std::vector<int>& 
 void day_1()
 {
     std::string path = "..\\resources\\input_1_p_1";
-    auto result = parse_file(path);
-    auto list_1 = result.first;
-    auto list_2 = result.second;
+   auto [list_1,list_2]=  parse_file(path);
     std::cout<< "diff number is: " <<sum_dif_lists(list_1,list_2)<<std::endl;
 }
 
