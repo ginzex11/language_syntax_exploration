@@ -1,0 +1,74 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <map>
+#include <unordered_set>
+
+
+std::vector<int> read_numbers_input(const std::string& filename)
+{
+    std::ifstream input_file(filename);
+    int input_number;
+    std::string input_txt;
+    std::vector<int> input_vector;
+    if(!input_file.is_open())
+    {
+        std::cerr<< "couldnt open file." << filename <<std::endl;
+    }
+    while(input_file >> input_number)
+    {
+        input_vector.push_back(input_number);
+    }
+    input_file.close();
+    return input_vector;
+}
+int day_1_part_1(std::vector<int>input_vector )
+{
+    int comp;
+    int i=0;
+
+
+}
+
+int main(int argc, char **argv)
+{
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " <input_file>" << std::endl;
+        return 1;
+    }
+    std::string my_text;
+    std::ifstream my_file;
+    std::vector<int> input_vector;
+    int input_number;
+    std::unordered_set<int> input_hash_set;
+
+    int comp;
+    int i=0;
+
+    my_file.open(argv[1]);
+    while (my_file>>input_number)
+    {
+       input_vector.push_back(input_number);
+       std::cout<<input_vector[i]<<std::endl;
+       i++;
+    }
+
+    for( i=0; i<input_vector.size();i++)
+    {
+        //use map if needed sorting a bit slower, key value pairs.(uses binary search tree for example red-black-tree) lookup, insertions, deletion O(logn)
+        // use hashset -> unique elements but not sorted. finding element O(1), no ke values paris just elements.
+        comp = 2020 - input_vector[i];
+        if(input_hash_set.find(comp)!=input_hash_set.end())
+        {
+         break;
+         
+        }
+        else{
+           input_hash_set.insert(input_vector[i]);
+         }  
+    }
+    std::cout<<"2 numbers to make 2020 are:"<<comp<<" "<<input_vector[i]<<std::endl;
+    std::cout <<"multiplication of the 2 nums are:"<<comp<< "x"<<input_vector[i]<<"="<<comp*input_vector[i]<<std::endl;
+    return 0;
+}
